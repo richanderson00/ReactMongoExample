@@ -1,23 +1,28 @@
 var express = require('express');
 var app = express();
 
-var MongoClient =  require('mongodb').MongoClient;
 var assert = require('assert');
 var ObjectId = require('mongodb').ObjectID;
 var url = 'mongodb://localhost:27017/test';
+var path = require('path');
 
+var mongo = require('./mongo/mongo.js');
+
+mongo.hello();
+
+
+var routes = require('./routes/index');
 
 var findRestaurants = function(res, db, callback) {
-
 
     console.log('Connected');
 
     var cursor = db.collection('restaurants').find();
 
-    cursor.each( function(err, doc) {
+    cursor.forEach( function(err, doc) {
         assert.equal(err, null);
         if (doc != null) {
-            console.log(doc);
+            console.log(doc.name);
         }
         else
         {
@@ -26,17 +31,11 @@ var findRestaurants = function(res, db, callback) {
     });
 }
 
-app.get('/', function (req, res) {
+// view engine setup
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
 
-    res.send("Hello");
-
-     MongoClient.connect(url, function(err, db) {
-        assert.equal(null, err);
-        findRestaurants(res, db, function() {
-            db.close();
-        });
-     });
-});
+app.use('/', routes);
 
 
 var server = app.listen(3001, function () {

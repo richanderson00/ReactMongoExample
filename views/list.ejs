@@ -1,0 +1,7 @@
+<h1>Resturants </h1>
+<% var i = 0; cursor.forEach( function(item) {  %>
+
+<p><%= i%> - <%= item.name%> </p>
+<%
+    i = i + 1;
+});%>
