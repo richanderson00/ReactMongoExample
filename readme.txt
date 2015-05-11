@@ -20,3 +20,9 @@ it was built on my mac so you'll have to change scripts as needed.
 3. Start the app:
 
 node app.js
+
+4. To stop mongo, open up another terminal window and use these commands:
+
+mongo
+use admin
+db.shutdownServer()
