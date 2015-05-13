@@ -1,0 +1,15 @@
+<h1><%= item.name %></h1>
+<% if (item.cuisine ) { %>
+cuisine - <%= item.cuisine%>
+<% } %>
+
+<h2>Rating</h2>
+<ul>
+    <% for(var i=0; i<item.grades.length; i++) { %>
+    <li>
+            Grade - <%= item.grades[i].grade %> ,
+             Score - <%= item.grades[i].score %>
+
+    </li>
+    <% } %>
+</ul>

@@ -3,6 +3,8 @@ var express = require('express');
 var router = express.Router();
 var assert = require('assert');
 
+var ObjectId = require('mongodb').ObjectID;
+
 router.get('/list', function(req, res) {
 
       mongo.connectDefault( function (err, db) {
@@ -14,6 +16,23 @@ router.get('/list', function(req, res) {
             });
 
     });
+});
+
+router.get('/view', function(req, res) {
+
+    mongo.connectDefault( function (err, db) {
+
+        db.collection('restaurants').findOne({"_id" : ObjectId(req.query.id)},
+            function (err, item) {
+                console.log( req.query.id);
+                console.log( item );
+                res.render('view.ejs', {title: 'Express', item: item});
+                db.close();
+            });
+
+    });
+
+
 });
 
 module.exports = router;

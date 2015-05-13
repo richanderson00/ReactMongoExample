@@ -2,6 +2,8 @@
 <% var i = 0; cursor.forEach( function(item) {  %>
 
 <p><%= i%> - <%= item.name%> </p>
+<a href="/view?id=<%= item._id %>">view...</a>
+
 <%
     i = i + 1;
 });%>
