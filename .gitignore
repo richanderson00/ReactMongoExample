@@ -1,3 +1,6 @@
 npm-debug.log
 mongo/data
 node_modules
+dist
+
+

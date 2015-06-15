@@ -5,11 +5,13 @@ var assert = require('assert');
 var ObjectId = require('mongodb').ObjectID;
 var url = 'mongodb://localhost:27017/test';
 var path = require('path');
-
 var mongo = require('./mongo/mongo.js');
 
-mongo.hello();
+//app.use(express.static(path.join(__dirname, 'dist/public')));
 
+app.use('/public', express.static(path.join(__dirname, 'dist/public')));
+
+//mongo.hello();
 
 var routes = require('./routes/index');
 
@@ -37,6 +39,8 @@ app.set('view engine', 'ejs');
 
 app.use('/', routes);
 
+
+// make bower directory available
 
 var server = app.listen(3001, function () {
 

@@ -1,5 +1,5 @@
 /**
- * Created by andersor on 5/10/15.
+ * Created by Rich Anderson on 5/10/15.
  */
 
 exports.mongoUri = 'mongodb://localhost:27017/test';

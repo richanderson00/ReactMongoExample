@@ -5,6 +5,18 @@ var assert = require('assert');
 
 var ObjectId = require('mongodb').ObjectID;
 
+router.get('/react', function(req, res) {
+
+    mongo.connectDefault( function (err, db) {
+
+        var cursor = db.collection('restaurants').find().toArray(
+            function(err, cursor) {
+                res.render('react.ejs', { title: 'Express', cursor: cursor   });
+                db.close();
+            });
+
+    });
+});
 router.get('/list', function(req, res) {
 
       mongo.connectDefault( function (err, db) {
