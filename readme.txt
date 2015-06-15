@@ -80,3 +80,12 @@ Tools used
 ----------
 
 npm install -g jshint
+
+
+History
+-------
+
+v0.1
+    updated project to use babel to transpile JSX file.
+    Added gulp to build project.
+    Added JShint to validate JSX files post compile
