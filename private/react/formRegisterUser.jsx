@@ -22,7 +22,7 @@ var RegisterUserForm = React.createClass({
         this.setState( {model : currentModel},
             function() {
                 if ( this.state.validOnce === true ) {
-                    this.submitForm();
+                        this.submitForm();
                 }
                 } );
     },
